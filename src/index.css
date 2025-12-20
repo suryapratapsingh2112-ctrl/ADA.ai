@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    /* Grok-style ultra dark theme with orange accent */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 92%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 92%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 92%;
+
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 92%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 10%;
+    --ring: 24 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Grok custom tokens */
+    --surface-elevated: 0 0% 8%;
+    --surface-hover: 0 0% 12%;
+    --text-primary: 0 0% 92%;
+    --text-secondary: 0 0% 65%;
+    --text-muted: 0 0% 45%;
+    --glow-primary: 24 100% 50%;
+
+    /* Minimal shadows */
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.5);
+    --shadow-md: 0 2px 8px hsl(0 0% 0% / 0.6);
+    --shadow-lg: 0 4px 16px hsl(0 0% 0% / 0.7);
+    --shadow-glow: 0 0 20px hsl(24 100% 50% / 0.15);
+
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 24 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 24 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-orange-400 to-amber-500;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.25);
+  }
+
+  .glow-hover {
+    transition: box-shadow 0.2s ease;
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.2);
+  }
+
+  .glass {
+    @apply bg-card/90 backdrop-blur-md border border-border/40;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 2px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+
+  .typing-cursor::after {
+    content: '▊';
+    color: hsl(var(--primary));
+    animation: blink 0.8s step-end infinite;
+    margin-left: 2px;
+    font-size: 0.9em;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Typing animation for streaming text */
+  .streaming-text {
+    animation: text-reveal 0.02s ease-out;
+  }
+
+  .streaming-text p,
+  .streaming-text li,
+  .streaming-text h1,
+  .streaming-text h2,
+  .streaming-text h3,
+  .streaming-text h4,
+  .streaming-text code,
+  .streaming-text pre {
+    animation: word-fade-in 0.15s ease-out forwards;
+  }
+
+  @keyframes word-fade-in {
+    from {
+      opacity: 0.4;
+      filter: blur(1px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  /* Smooth text appearance */
+  .answer-text {
+    line-height: 1.7;
+  }
+
+  .answer-text.is-streaming {
+    animation: pulse-subtle 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.3s ease-out forwards;
+  }
+
+  @keyframes typing-bounce {
+    0%, 60%, 100% {
+      transform: translateY(0);
+      opacity: 0.3;
+    }
+    30% {
+      transform: translateY(-4px);
+      opacity: 1;
+    }
+  }
+
+  .animate-typing-bounce {
+    animation: typing-bounce 1.2s ease-in-out infinite;
+  }
+
+  /* Grok-style minimal input */
+  .grok-input {
+    @apply bg-transparent border-0 outline-none text-foreground placeholder:text-muted-foreground;
+  }
+
+  /* Grok message styling */
+  .grok-message {
+    @apply text-foreground leading-relaxed;
+  }
+
+  .grok-user-message {
+    @apply text-foreground/90;
+  }
+}

@@ -1,0 +1,13 @@
+project_id = "djjgcpgoofscloeknwxv"
+
+[functions.tavily-search]
+verify_jwt = false
+
+[functions.chat]
+verify_jwt = false
+
+[functions.related-questions]
+verify_jwt = false
+
+[functions.google-search]
+verify_jwt = false
