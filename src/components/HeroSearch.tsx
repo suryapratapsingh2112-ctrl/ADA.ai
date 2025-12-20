@@ -17,8 +17,9 @@ export function HeroSearch({ onSearch, isLoading }: HeroSearchProps) {
             What do you want to know?
           </h1>
           <p className="text-muted-foreground text-sm">
-            Research with <span className="text-primary">RUDRA-GROK</span> · Code with <span className="text-primary">ADA-Code</span>
+            Structured research and mathematical reasoning with <span className="text-primary">ADA AI</span>
           </p>
+
         </div>
 
         {/* Search Input */}

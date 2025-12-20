@@ -11,12 +11,12 @@ interface ModeSelectorProps {
 const modes = [
   {
     id: 'research' as AIMode,
-    label: 'RUDRA',
+    label: 'Research',
     icon: Zap,
   },
   {
     id: 'code' as AIMode,
-    label: 'ADA',
+    label: 'code',
     icon: Code,
   },
 ];

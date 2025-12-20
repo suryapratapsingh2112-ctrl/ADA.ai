@@ -46,7 +46,7 @@ export function Sidebar({ threads, currentThreadId, onNewThread, onSelectThread,
           {/* Logo - minimal */}
           <div className="flex items-center gap-2 mb-4 px-2 py-2">
             <Zap className="w-5 h-5 text-primary" />
-            <span className="text-base font-semibold text-foreground">RUDRA</span>
+            <span className="text-base font-semibold text-foreground">ADA AI</span>
           </div>
 
           {/* New Thread Button */}
